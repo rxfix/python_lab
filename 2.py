@@ -18,18 +18,14 @@ __author__ = 'Нестеренко Александр Валерьевич'
 # к его реализации позже. Главное: дополнить числа до двух разрядов нулём!
 
 massage = ['в', '5', 'часов', '17', 'минут', 'температура', 'воздуха', 'была', '+5', 'градусов']
-idx = len(massage)-1
-while idx >= 0:
-# for idx in range(len(massage)):
+
+for idx in range(len(massage)):
     inum = massage[idx]
     for char in range(len(inum)):
         if ('0' <= inum[char] <= '9') or inum[char] == '+' or inum[char] == '-':
             print(inum[char])
-            massage.insert(idx + 1, '"')
-            massage.insert(idx, '"')
-            idx += 1
-    idx -= 1
 
-print(massage)
+
+
 
 # massage.insert(1, '"')
