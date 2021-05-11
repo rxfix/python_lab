@@ -18,14 +18,26 @@ __author__ = 'Нестеренко Александр Валерьевич'
 # к его реализации позже. Главное: дополнить числа до двух разрядов нулём!
 
 massage = ['в', '5', 'часов', '17', 'минут', 'температура', 'воздуха', 'была', '+5', 'градусов']
-
-for idx in range(len(massage)):
-    inum = massage[idx]
-    for char in range(len(inum)):
-        if ('0' <= inum[char] <= '9') or inum[char] == '+' or inum[char] == '-':
+print(id(massage))
+idx = len(massage)-1  # список проходим с конца
+while idx >= 0:
+    inum = massage[idx]  # элемент списка
+    item_is_num = 1
+    for char in range(len(inum)): # проверяем все ли символы цифры
+        if ('0' <= inum[char] <= '9'): #or inum[char] == '+' or inum[char] == '-':
             print(inum[char])
+            _item_is_num = 1
+        else:
+            _item_is_num = 0
+        item_is_num = item_is_num * _item_is_num
+    if item_is_num == 1:  # если все символы цифры, то добавляем '"' после и до элемента
+        massage.insert(idx + 1, '"')
+        massage.insert(idx, '"')
+    idx -= 1
 
 
 
 
-# massage.insert(1, '"')
+print(massage)
+print(id(massage))
+
