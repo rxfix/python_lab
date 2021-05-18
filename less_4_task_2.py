@@ -12,16 +12,26 @@ __author__ = 'Нестеренко Александр'
 
 
 from requests import get, utils
+from decimal import Decimal
 
 
 def currency_rates(currency):
-        response=get('http://www.cbr.ru/scripts/XML_daily.asp')
-        encodings = utils.get_encoding_from_headers(response.headers)
-        content = response.content.decode(encoding=encodings)
-        f = content
-        l = f.split('<')
-        print(response.next)
-        print(l)
-        print(dir(response))
-USD=''
-currency_rates(USD)
+    response = get('http://www.cbr.ru/scripts/XML_daily.asp')
+    content = response.content.decode(
+        encoding=response.encoding)  # получаем контент в виде байт кода и декодируем его в строку
+
+    date = content.split('<ValCurs Date="')
+    date = date[1].split('" name')
+    print(date[0])
+    for el in content.split('<CharCode>')[1:]:  # разделяем контент по символу валюты
+        char_code = el.split('</CharCode>')
+        # ['USD', '<Nominal>1</Nominal><Name>Доллар США</Name><Value>73,6992</Value>...
+        if char_code[0] == currency.upper():  # если найден нужный символ валюты не зависимо от регистра
+            value = char_code[1].split('<Value>')  # разделяем по курсу валюты
+            value = value[1].split('</Value>')
+            # ['73,6992', '</Valute><Valute ID="R01239"><NumCode>978</NumCode>']
+            return Decimal(value[0].replace(',', '.'))
+            # заменяем в найденом элементе списка заппятуюна точку и преобразуем во float
+
+
+print(currency_rates('usd'))
