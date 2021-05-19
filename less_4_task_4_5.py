@@ -15,9 +15,9 @@ import argparse
 
 # Парсер для параметров командной строки
 parser = argparse.ArgumentParser(description='Курс валюты по отношению к рублю, на текущюю дату')
-# ArgumentParser - объект хранящий всю информацию , необходимую для разбора командной строки
+# ArgumentParser (parser) - объект хранящий всю информацию , необходимую для разбора командной строки
 parser.add_argument('currency', type=str, help='Название валюты')
-# add_argument - добавление информации об аргументах в объект
+# add_argument - добавление информации об аргументах в объект parser
 args = parser.parse_args()  # анализ аргументов через parse_args()
 print(args.currency)
 print(utils.currency_rates(args.currency))
