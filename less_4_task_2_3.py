@@ -49,3 +49,6 @@ def currency_rates(currency):
             value = Decimal(value[0].replace(',', '.'))
             # заменяем в найденом элементе списка заппятуюна точку и преобразуем во Decimal
             return value, curr_date
+
+print(f"{currency_rates('usd')[0]}, {currency_rates('usd')[1]}")
+print(f"{currency_rates('EUR')[0]}, {currency_rates('EUR')[1]}")
