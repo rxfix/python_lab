@@ -20,6 +20,9 @@ parser.add_argument('currency', type=str, help='Название валюты')
 args = parser.parse_args()  # анализ аргументов через parse_args()
 
 print(args.currency)
-print(f'{utils.currency_rates(args.currency)[0]}, {utils.currency_rates(args.currency)[1]}')
-# print(type(utils.currency_rates(args.currency)[0])) # <class 'decimal.Decimal'>
-# print(type(utils.currency_rates(args.currency)[1])) # <class 'datetime.date'>
+if utils.currency_rates(args.currency):  # если результат функции найденная валюта и курс
+    print(f'{utils.currency_rates(args.currency)[0]}, {utils.currency_rates(args.currency)[1]}')
+    # print(type(utils.currency_rates(args.currency)[0])) # <class 'decimal.Decimal'>
+    # print(type(utils.currency_rates(args.currency)[1])) # <class 'datetime.date'>
+else:
+    print(utils.currency_rates(args.currency))  # если результат функции None
