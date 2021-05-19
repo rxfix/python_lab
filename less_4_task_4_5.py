@@ -12,12 +12,14 @@ __author__ = 'Нестеренко Александр'
 import utils
 import argparse
 
-
 # Парсер для параметров командной строки
 parser = argparse.ArgumentParser(description='Курс валюты по отношению к рублю, на текущюю дату')
 # ArgumentParser (parser) - объект хранящий всю информацию , необходимую для разбора командной строки
 parser.add_argument('currency', type=str, help='Название валюты')
 # add_argument - добавление информации об аргументах в объект parser
 args = parser.parse_args()  # анализ аргументов через parse_args()
+
 print(args.currency)
-print(utils.currency_rates(args.currency))
+print(f'{utils.currency_rates(args.currency)[0]}, {utils.currency_rates(args.currency)[1]}')
+# print(type(utils.currency_rates(args.currency)[0])) # <class 'decimal.Decimal'>
+# print(type(utils.currency_rates(args.currency)[1])) # <class 'datetime.date'>

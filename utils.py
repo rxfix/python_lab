@@ -33,7 +33,7 @@ def currency_rates(currency):
             # ['73,6992', '</Valute><Valute ID="R01239"><NumCode>978</NumCode>']
             value = Decimal(value[0].replace(',', '.'))
             # заменяем в найденом элементе списка заппятуюна точку и преобразуем во Decimal
-            return f'{value}, {curr_date}'
+            return value, curr_date
 
 
 if __name__ == '__main__':  # эта часть не будет выполняться при вызове этого модуля
