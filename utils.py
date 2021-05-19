@@ -11,14 +11,9 @@ def currency_rates(currency):
         encoding=response.encoding)  # получаем контент в виде байт кода и декодируем его в строку
 
     # извлечение даты
-    curr_date = content.split('<ValCurs Date="')
-    # ['<?xml version="1.0" encoding="windows-1251"?>', '19.05.2021" name="Foreign Currency Mar...
-    curr_date = curr_date[1].split('" name')
-    # ['19.05.2021', '="Foreign Currency Market"...
-    curr_date = curr_date[0].split('.')
-    # ['19', '05', '2021']
-    curr_date = datetime(year=int(curr_date[2]), month=int(curr_date[1]), day=int(curr_date[0]))
-    # 2021-05-19 00:00:00
+    curr_date = response.headers.get('Date').split(' ')  # дуту берем из заголовка сайта
+    # date = ['Wed,', '19', 'May', '2021', '16:21:44', 'GMT']
+    curr_date = datetime.strptime(f'{curr_date[2]} {curr_date[1]} {curr_date[3]}', '%B %d %Y')
     curr_date = curr_date.date()
     # 2021-05-19
 
