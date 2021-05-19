@@ -12,9 +12,9 @@ def currency_rates(currency):
 
     # извлечение даты
     curr_date = content.split('<ValCurs Date="')
-    # ['<?xml version="1.0" encoding="windows-1251"?>', '19.05.2021" name="Foreign Currency Mar
+    # ['<?xml version="1.0" encoding="windows-1251"?>', '19.05.2021" name="Foreign Currency Mar...
     curr_date = curr_date[1].split('" name')
-    # ['19.05.2021', '="Foreign Currency Market"
+    # ['19.05.2021', '="Foreign Currency Market"...
     curr_date = curr_date[0].split('.')
     # ['19', '05', '2021']
     curr_date = datetime(year=int(curr_date[2]), month=int(curr_date[1]), day=int(curr_date[0]))
@@ -33,8 +33,8 @@ def currency_rates(currency):
             # ['73,6992', '</Valute><Valute ID="R01239"><NumCode>978</NumCode>']
             value = Decimal(value[0].replace(',', '.'))
             # заменяем в найденом элементе списка заппятуюна точку и преобразуем во Decimal
-            return value, curr_date
+            return f'{value}, {curr_date}'
 
 
-if __name__ == '__main__':  # эта часть не будет выполняться при вызове этог модуля
+if __name__ == '__main__':  # эта часть не будет выполняться при вызове этого модуля
     print(currency_rates('usd'))

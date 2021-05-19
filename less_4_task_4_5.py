@@ -8,10 +8,16 @@ __author__ = 'Нестеренко Александр'
 # > python task_4_5.py USD
 # 75.18, 2020-09-05
 
-import sys
-import utils
 
-print(sys.argv[1:])
-print(utils.currency_rates('usD'))
-print(utils.currency_rates('JpY'))
-print(utils.currency_rates('EUR'))
+import utils
+import argparse
+
+
+# Парсер для параметров командной строки
+parser = argparse.ArgumentParser(description='Курс валюты по отношению к рублю, на текущюю дату')
+# ArgumentParser - объект хранящий всю информацию , необходимую для разбора командной строки
+parser.add_argument('currency', type=str, help='Название валюты')
+# add_argument - добавление информации об аргументах в объект
+args = parser.parse_args()  # анализ аргументов через parse_args()
+print(args.currency)
+print(utils.currency_rates(args.currency))
