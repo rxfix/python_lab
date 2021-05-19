@@ -50,5 +50,12 @@ def currency_rates(currency):
             # заменяем в найденом элементе списка заппятуюна точку и преобразуем во Decimal
             return value, curr_date
 
-print(f"{currency_rates('usd')[0]}, {currency_rates('usd')[1]}")
-print(f"{currency_rates('EUR')[0]}, {currency_rates('EUR')[1]}")
+
+while True:
+    in_currency = input('Введите валюту:')
+    if currency_rates(in_currency):  # если результат функции найденная валюта и курс
+        print(f'{currency_rates(in_currency)[0]}, {currency_rates(in_currency)[1]}')
+        # print(type(currency_rates(in_currency)[0])) # <class 'decimal.Decimal'>
+        # print(type(currency_rates(in_currency)[1])) # <class 'datetime.date'>
+    else:
+        print(currency_rates(in_currency))  # если результат функции None
