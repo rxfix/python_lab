@@ -19,10 +19,12 @@ parser.add_argument('currency', type=str, help='Название валюты')
 # add_argument - добавление информации об аргументах в объект parser
 args = parser.parse_args()  # анализ аргументов через parse_args()
 
-print(args.currency)
-if utils.currency_rates(args.currency):  # если результат функции найденная валюта и курс
-    print(f'{utils.currency_rates(args.currency)[0]}, {utils.currency_rates(args.currency)[1]}')
-    # print(type(utils.currency_rates(args.currency)[0])) # <class 'decimal.Decimal'>
-    # print(type(utils.currency_rates(args.currency)[1])) # <class 'datetime.date'>
-else:
-    print(utils.currency_rates(args.currency))  # если результат функции None
+
+if __name__ == '__main__':  # эта часть не будет выполняться при вызове этого модуля
+    print(args.currency)
+    if utils.currency_rates(args.currency):  # если результат функции найденная валюта и курс
+        print(f'{utils.currency_rates(args.currency)[0]}, {utils.currency_rates(args.currency)[1]}')
+        # print(type(utils.currency_rates(args.currency)[0])) # <class 'decimal.Decimal'>
+        # print(type(utils.currency_rates(args.currency)[1])) # <class 'datetime.date'>
+    else:
+        print(utils.currency_rates(args.currency))  # если результат функции None
