@@ -27,8 +27,8 @@ def currency_rates(currency):
             value = value[1].split('</Value>')
             # ['73,6992', '</Valute><Valute ID="R01239"><NumCode>978</NumCode>']
             value = Decimal(value[0].replace(',', '.'))
-            value = value.quantize(Decimal('1.00'))  # округлим до двух знаков послез точки
             # заменяем в найденом элементе списка заппятуюна точку и преобразуем во Decimal
+            value = value.quantize(Decimal('1.00'))  # округлим до двух знаков послез точки
             return value, curr_date
 
 
