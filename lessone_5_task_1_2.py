@@ -15,8 +15,7 @@ __author__ = 'Нестеренко Александр'
 # слово yield.
 
 
-n = 17
-odd_nums = (num for num in range(1, n + 1, 2))
+n = 182
 
-for _ in range(n // 2 + 1):
-    print(next(odd_nums))
+odd_nums = (num for num in range(1, n + 1, 2))
+print(*odd_nums, sep='\n')
