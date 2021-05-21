@@ -18,5 +18,5 @@ __author__ = 'Нестеренко Александр'
 n = 15
 odd_nums = (num for num in range(1, n + 1, 2))
 
-for _ in range(n // 2 + 1):
+for _ in odd_nums:
     print(next(odd_nums))
