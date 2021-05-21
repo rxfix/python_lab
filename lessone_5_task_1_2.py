@@ -1,5 +1,4 @@
 __author__ = 'Нестеренко Александр'
-
 # Задание 1. Написать генератор нечётных чисел от 1 до n (включительно), используя ключевое слово yield, например:
 # >>> odd_to_15 = odd_nums(15)
 # >>> next(odd_to_15)
@@ -16,8 +15,8 @@ __author__ = 'Нестеренко Александр'
 # слово yield.
 
 
-n = 15
+n = 12
 odd_nums = (num for num in range(1, n + 1, 2))
 
-for _ in range(n):
+for _ in range(n // 2 + 1):
     print(next(odd_nums))
