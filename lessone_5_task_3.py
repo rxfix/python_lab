@@ -21,6 +21,7 @@ __author__ = 'Нестеренко Александр'
 #
 # Доказать, что вы создали именно генератор. Проверить его работу вплоть до истощения. Подумать, в каких
 # ситуациях генератор даст эффект.
+
 import sys
 
 tutors = [
@@ -42,7 +43,6 @@ def tutors_klasses_gen(_tutors, _klasses):
 
 tutors_klasses_gen_tuple = tutors_klasses_gen(tutors, klasses)
 
-# print(*tutors_klasses_gen_tuple, sep='\n')
 for _ in range(len(tutors)):
     print(next(tutors_klasses_gen_tuple))
 print(type(tutors_klasses_gen_tuple), sys.getsizeof(tutors_klasses_gen_tuple))
