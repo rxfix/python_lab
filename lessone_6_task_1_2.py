@@ -25,24 +25,25 @@ import sys
 response = urllib.request.urlopen(
     'https://github.com/elastic/examples/raw/master/Common%20Data%20Formats/nginx_logs/nginx_logs')
 
-slovar = {}
+spammer_dic = {}
 for line in response:
-    spammer_ip = str(line).split(' - - ')[:1]  # ["b'173.255.199.22"]
+    line_ip = str(line).split(' - - ')[:1]  # ["b'173.255.199.22"]
     # print(spammer_ip)
-    if slovar.get(spammer_ip[0]):
-        slovar[spammer_ip[0]] += 1
+    if spammer_dic.get(line_ip[0]):
+        spammer_dic[line_ip[0]] += 1
     else:
-        slovar.setdefault(spammer_ip[0], 1)
+        spammer_dic.setdefault(line_ip[0], 1)
 
-n = 0
-for key in slovar:
-    if slovar[key] > n:
-        n = slovar[key]
-        spammer = key[2:]
-        print(n)
+max_request = 0
+for key in spammer_dic:
+    if spammer_dic[key] > max_request:
+        max_request = spammer_dic[key]
+        spammer_ip = key[2:]
+        # print(spammer_ip)
+        # print(max_request)
     # print(slovar[key])
-
-print(slovar)
-print(sys.getsizeof(slovar))
-print(type(response), sys.getsizeof(response))
-print(spammer)
+#
+# print(spammer_dic)
+# print(sys.getsizeof(spammer_dic))
+# print(type(response), sys.getsizeof(response))
+print('IP адрес спамера:', spammer_ip, ', который сделал', max_request, 'запросов.')
