@@ -27,7 +27,7 @@ response = urllib.request.urlopen(
 
 spammer_dic = {}
 for line in response:
-    line_ip = str(line).split(' - - ')[:1]  # ["b'173.255.199.22"]
+    line_ip = str(line).split(' - - ')  # ["b'173.255.199.22"]
     # print(spammer_ip)
     if spammer_dic.get(line_ip[0]):
         spammer_dic[line_ip[0]] += 1
