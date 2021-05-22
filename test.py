@@ -23,20 +23,32 @@ import sys
 
 response = urllib.request.urlopen('https://github.com/elastic/examples/raw/master/Common%20Data%20Formats/nginx_logs/nginx_logs')
 
-# line = response.readline()
-# print(line)
-# line = response.readline()
-# print(line)
-# line = response.readline()
-# print(line)
-# line = response.readline()
-# print(line)
-
+slovar = {}
+for line in response:
+       spammer_ip = str(line).split(' - - ')[:1]  # ["b'173.255.199.22"]
+       # print(spammer_ip)
+       if slovar.get(spammer_ip[0]):
+              slovar[spammer_ip[0]] += 1
+       else:
+              slovar.setdefault(spammer_ip[0], 1)
+print(slovar)
+print(sys.getsizeof(slovar))
 print(type(response), sys.getsizeof(response))
 
-for line in response:
-       print(line)
-#     print(file_1.readline())
+n=0
+for key in slovar:
+       if slovar[key] > n:
+              n=slovar[key]
+              spammer= key[2:]
+              print(n)
+       # print(slovar[key])
+
+print(slovar)
+print(sys.getsizeof(slovar))
+print(type(response), sys.getsizeof(response))
+print(spammer)
+
+
 # with open(response.text, encoding='utf-8') as file_1:
 # txt = '''Пробуем записать в файл текст.
 # Используем метод .write().'''
