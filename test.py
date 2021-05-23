@@ -78,3 +78,4 @@ with open('writelines_method.txt', 'a', encoding='utf-8') as f:
 
 file_1.close()
 file_2.close()
+
