@@ -1,4 +1,5 @@
 __author__ = 'Нестеренко Александр'
+
 # Задание 3. Есть два файла: в одном хранятся ФИО пользователей сайта, а в другом  — данные об их хобби.
 # Известно, что при хранении данных используется принцип: одна строка — один пользователь, разделитель
 # между значениями — запятая. Написать код, загружающий данные из обоих файлов и формирующий из них словарь:
@@ -24,27 +25,22 @@ __author__ = 'Нестеренко Александр'
 # 
 # Задание 5.**(вместо 4) Решить задачу 4 и реализовать интерфейс командной строки, чтобы можно было задать
 # имя обоих исходных файлов и имя выходного файла. Проверить работу скрипта.
+import sys
 
-
-file_users = open('users.csv', 'r', encoding='utf-8')
-user = file_users.readline()
-file_hobby = open('hobby.csv', 'r', encoding='utf-8')
-hobby = file_hobby.readline()
-
-with open('users_hobby.txt', 'w', encoding='utf-8') as f:
+with open('users_hobby.txt', 'w', encoding='utf-8') as f, \
+        open('users.csv', 'r', encoding='utf-8') as file_users, \
+        open('hobby.csv', 'r', encoding='utf-8') as file_hobby:
+    user = file_users.readline()
+    if not user:
+        sys.exit(1)
+    hobby = file_hobby.readline()
     while user:
-        if not hobby:
+        if hobby:
+            f.write(f'{user[:-1]}: {hobby}')
+        else:
             hobby = None
             f.write(f'{user[:-1]}: {hobby}\n')
-        else:
-            f.write(f'{user[:-1]}: {hobby}')
         user = file_users.readline()
         hobby = file_hobby.readline()
-
-# for line in file_users:
-#    f.write(f'{line[:-1]}: {file_hobby.readline()}')
-# # f.write(line2)
-# users_hobby = open('users_hobby.txt', 'r', encoding='utf-8')
-# users_hobby.close()
-file_users.close()
-file_hobby.close()
+        if not user and hobby:
+            sys.exit(1)
