@@ -30,17 +30,19 @@ import sys
 with open('users_hobby.txt', 'w', encoding='utf-8') as f, \
         open('users.csv', 'r', encoding='utf-8') as file_users, \
         open('hobby.csv', 'r', encoding='utf-8') as file_hobby:
-    user = file_users.readline()
-    if not user:
+
+    user = file_users.readline()  # читаем в файле пользователей строку
+    if not user:  # если нет пользователей выходим с кодом 1
         sys.exit(1)
-    hobby = file_hobby.readline()
-    while user:
-        if hobby:
-            f.write(f'{user[:-1]}: {hobby}')
-        else:
+    hobby = file_hobby.readline()  # читаем в файле хобби строку
+
+    while user:  # пока есть пользователи
+        if hobby:  # и есть хобби
+            f.write(f'{user[:-1]}: {hobby}')  # записываем объединенные данные в файл
+        else:  # исли хобби меньше чем пользователей, то хобби - None
             hobby = None
             f.write(f'{user[:-1]}: {hobby}\n')
-        user = file_users.readline()
-        hobby = file_hobby.readline()
-        if not user and hobby:
+        user = file_users.readline()  # читаем в файле пользователей следующую строку
+        hobby = file_hobby.readline()  # читаем в файле хобби следующую строку
+        if not user and hobby:  # если пользователей меньше чем хобби выходим с кодом 1
             sys.exit(1)
