@@ -50,8 +50,8 @@ def make_users_hobby_file(_users, _hobby, _users_hobby):
                 sys.exit(1)
     return 0
 
+if len(sys.argv) < 4:
+    print('Введите в терминале данные через пробел: "имя файла пользователей сайта" "имя файла хобби" "имя выходного файла"')
+else:
+    result = make_users_hobby_file(sys.argv[1], sys.argv[2], sys.argv[3])
 
-result = make_users_hobby_file(sys.argv[1], sys.argv[2], sys.argv[3])
-# print(f'результат: {result}')
-#
-# result = sum(map(int, sys.argv[1:]))
