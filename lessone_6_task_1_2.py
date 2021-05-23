@@ -33,6 +33,7 @@ for line in response:
         spammer_dic[line_ip[0]] += 1
     else:
         spammer_dic.setdefault(line_ip[0], 1)
+
 spammer_ip = ''
 max_request = 0
 for key in spammer_dic:
@@ -44,4 +45,4 @@ for key in spammer_dic:
 # print(spammer_dic)
 # print(sys.getsizeof(spammer_dic))
 # print(type(response), sys.getsizeof(response))
-print(f'IP адрес спамера:, {spammer_ip[2:]}, который сделал, {max_request}, запросов.')
+print(f'IP адрес спамера: {spammer_ip[2:]}, который сделал {max_request} запросов.')
