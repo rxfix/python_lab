@@ -73,8 +73,8 @@ print(line2)
 #              'Используем метод .writelines().\n']
 
 with open('writelines_method.txt', 'a', encoding='utf-8') as f:
-   f.write(line1)
-   f.write(line2)
+   f.write(f'{line1[:-1]}: {line2}')
+   # f.write(line2)
 
 file_1.close()
 file_2.close()
