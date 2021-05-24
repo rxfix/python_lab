@@ -54,7 +54,8 @@ def make_users_hobby_file(_users, _hobby, _users_hobby):
 
 if len(sys.argv) < 4:
     print('Введите в терминале данные через пробел: "имя файла пользователей: users.csv" '
-          '"имя файла хобби: hobby.csv" "имя выходного файла"\n Например: "task_5.py users.csv hobby.csv users_hobby.txt"')
+          '"имя файла хобби: hobby.csv" "имя выходного файла"\n Например: '
+          '"task_5.py users.csv hobby.csv users_hobby.txt"')
 else:
     result = make_users_hobby_file(sys.argv[1], sys.argv[2], sys.argv[3])
     print('Файл с объединенными данными:', sys.argv[3])

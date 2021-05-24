@@ -11,5 +11,5 @@ def rec(_summa):
 if len(sys.argv) < 2:
     print('Введите в терминале сумму продаж, например: "add_sale.py 123.4"')
 else:
-    result = rec(sys.argv[1])
+    rec(sys.argv[1])
     print('записанная сумма продаж:', sys.argv[1])
