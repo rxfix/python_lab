@@ -24,7 +24,7 @@ response = urllib.request.urlopen(
 
 # создание словаря с ip и их повторений
 spammer_dic = {}
-for line in response:
+for line in response:  # читаем по стокам из запроса
     line_ip = str(line).split(' - - ')  # ["b'173.255.199.22"]
     if spammer_dic.get(line_ip[0]):  # если ip есть в словаре, добавляем +1 в значение по ключю
         spammer_dic[line_ip[0]] += 1
