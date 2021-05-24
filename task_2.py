@@ -22,15 +22,17 @@ import urllib.request
 response = urllib.request.urlopen(
     'https://github.com/elastic/examples/raw/master/Common%20Data%20Formats/nginx_logs/nginx_logs')
 
+# создание словаря с ip и их повторений
 spammer_dic = {}
 for line in response:
     line_ip = str(line).split(' - - ')  # ["b'173.255.199.22"]
-    # print(spammer_ip)
-    if spammer_dic.get(line_ip[0]):
+    if spammer_dic.get(line_ip[0]):  # если ip есть в словаре, добавляем +1 в значение по ключю
         spammer_dic[line_ip[0]] += 1
     else:
-        spammer_dic.setdefault(line_ip[0], 1)
+        spammer_dic.setdefault(line_ip[0], 1)  # если ip нет в словаре, то добавляем его в словарь
+        # как ключ и устанавливаем значение по ключю как 1
 
+# поиск спамера
 spammer_ip = ''
 max_request = 0
 for key in spammer_dic:
