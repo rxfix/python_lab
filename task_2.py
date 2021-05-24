@@ -18,9 +18,6 @@ __author__ = 'Нестеренко Александр'
 # размер которых превышает объем ОЗУ компьютера.
 
 import urllib.request
-#
-# from requests import get
-# import sys
 
 response = urllib.request.urlopen(
     'https://github.com/elastic/examples/raw/master/Common%20Data%20Formats/nginx_logs/nginx_logs')
@@ -40,9 +37,5 @@ for key in spammer_dic:
     if spammer_dic[key] > max_request:
         max_request = spammer_dic[key]
         spammer_ip = key
-        # print(slovar[key])
-#
-# print(spammer_dic)
-# print(sys.getsizeof(spammer_dic))
-# print(type(response), sys.getsizeof(response))
+
 print(f'IP адрес спамера: {spammer_ip[2:]}, который сделал {max_request} запросов.')

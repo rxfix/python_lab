@@ -41,10 +41,10 @@ def make_users_hobby_file(_users, _hobby, _users_hobby):
 
         while user:  # пока есть пользователи
             if hobby:  # и есть хобби
-                f.write(f'{user[:-1]}: {hobby}')  # записываем объединенные данные в файл
+                f.write(f'{str.strip(user)}: {hobby}')  # записываем объединенные данные в файл
             else:  # исли хобби меньше чем пользователей, то хобби - None
                 hobby = None
-                f.write(f'{user[:-1]}: {hobby}\n')
+                f.write(f'{str.strip(user)}: {hobby}\n')
             user = file_users.readline()  # читаем в файле пользователей следующую строку
             hobby = file_hobby.readline()  # читаем в файле хобби следующую строку
             if not user and hobby:  # если пользователей меньше чем хобби выходим с кодом 1
