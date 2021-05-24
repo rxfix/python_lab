@@ -34,7 +34,7 @@ for line in response:  # читаем по стокам из запроса
 
 # поиск спамера
 spammer_ip = ''
-max_request = 0  # максимальное значение по ключю в словаре
+max_request = 0  # максимальное значение запросов по ключю в словаре
 for key in spammer_dic:
     if spammer_dic[key] > max_request:
         max_request = spammer_dic[key]
