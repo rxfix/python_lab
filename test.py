@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import os
 
 root_dir = './'
@@ -32,3 +33,6 @@ __step__ = 3
 ROOT = os.path.abspath(os.path.join(__file__, '..'))
 print(ROOT)
 print(os.listdir(ROOT))
+=======
+ццц
+>>>>>>> origin/lessone-7
