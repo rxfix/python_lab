@@ -49,7 +49,7 @@ def make_users_hobby_file(_users, _hobby, _users_hobby):
             hobby = file_hobby.readline()  # читаем в файле хобби следующую строку
             if not user and hobby:  # если пользователей меньше чем хобби выходим с кодом 1
                 sys.exit(1)
-    return 'Ok'
+    return 0
 
 
 if len(sys.argv) < 4:

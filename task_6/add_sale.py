@@ -30,9 +30,9 @@ __author__ = 'Нестеренко Александр'
 import sys
 
 
-def rec(_summa):
+def rec(summa):
     with open('bakery.csv', 'a', encoding='utf-8') as f:
-        f.write(f'{_summa}\n')
+        f.write(f'{summa}\n')
 
 
 if len(sys.argv) < 2:
