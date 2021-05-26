@@ -30,15 +30,15 @@ __step__ = 2
 #         print(os.path.split(f_path))
 
 __step__ = 3
-ROOT = os.path.abspath(os.path.join(__file__, '..'))
-print(ROOT)
-print(os.listdir(ROOT))
-
-folder = r'C:\Users\user\AppData\Local\Programs\Python\Python39\Lib\site-packages\django'
-django_dirs = [item
-               for item in os.listdir(folder)
-               if os.path.isdir(os.path.join(folder, item))]
-print(django_dirs)
+# ROOT = os.path.abspath(os.path.join(__file__, '..'))
+# print(ROOT)
+# print(os.listdir(ROOT))
+#
+# folder = r'C:\Users\user\AppData\Local\Programs\Python\Python39\Lib\site-packages\django'
+# django_dirs = [item
+#                for item in os.listdir(folder)
+#                if os.path.isdir(os.path.join(folder, item))]
+# print(django_dirs)
 
 __создание_1000_файлов__ = 4
 # import os
@@ -93,50 +93,67 @@ __методы_и_пути__ = 6
 
 __создание_переименование_и_удаление_папок__ = 7
 
+# import os
+#
+# dir_name = 'sample_dir'
+# if not os.path.exists(dir_name):
+#    os.mkdir(dir_name)
+
 import os
 
-dir_name = 'sample_dir'
-if not os.path.exists(dir_name):
-   os.mkdir(dir_name)
-
-import os
-
-dir_path = os.path.join('data', 'src')
-if not os.path.exists(dir_path):
-   os.makedirs(dir_path)
-
-dir_path = os.path.join('data', '555')
-if not os.path.exists(dir_path):
-   os.makedirs(dir_path)
-   print(dir_path)
-
+# dir_path = os.path.join('data', 'src')
+# if not os.path.exists(dir_path):
+#    os.makedirs(dir_path)
+#
+# dir_path = os.path.join('data', '555')
+# if not os.path.exists(dir_path):
+#    os.makedirs(dir_path)
+#    print(dir_path)
+#
 
 
 import yaml
 from pprint import pprint
 
-with open('info.yaml') as f:
-    templates = yaml.safe_load(f)
-
-print(templates)
-
-import yaml
-
-trunk_template = [
-    'switchport trunk encapsulation dot1q', 'switchport mode trunk',
-    'switchport trunk native vlan 999', 'switchport trunk allowed vlan'
-]
-
-access_template = [
-    'switchport mode access', 'switchport access vlan',
-    'switchport nonegotiate', 'spanning-tree portfast',
-    'spanning-tree bpduguard enable'
-]
-
-to_yaml = {'trunk': trunk_template, 'access': access_template}
-
-with open('sw_templates.yaml', 'w') as f:
-    yaml.dump(to_yaml, f, default_flow_style=False)
-
 with open('sw_templates.yaml') as f:
-    print(f.read())
+    level_dic_0 = yaml.safe_load(f)
+
+# pprint(templates)
+# print('-----',templates.items(),'----')
+for key_0 in level_dic_0:
+    dir_path = os.path.join(key_0)
+    if not os.path.exists(dir_path):
+        os.makedirs(dir_path)
+    level_list_1 = level_dic_0[key_0]
+    print(type(level_list_1))
+    # pprint(templates1)
+    for level_dict_1 in level_list_1:
+        if level_dict_1 == str(level_dict_1):
+            #здесь создаем корневой файл
+            print(type(level_dict_1))
+        else:
+            for key_1 in level_dict_1:
+                dir_path = os.path.join(key_0, key_1)
+                if not os.path.exists(dir_path):
+                    os.makedirs(dir_path)
+                level_list_1 = level_dic_0[key_0]
+                print(type(level_list_1))
+
+        # print(type(item))
+        # for item1 in item:
+        #     pprint(item1)
+    # print(key)
+    # print(val)
+    # for key1, val1 in templates1:
+    #     # dir_path = os.path.join(key, key1)
+    #     # if not os.path.exists(dir_path):
+    #     #     os.makedirs(dir_path)
+    #     # pprint(templates[key1])
+    #     print('k')
+    #     # print(val)
+    #     # print(templates.items())
+    #     # dir_path = os.path.join(key, key1)
+    #     # if not os.path.exists(key1):
+    #     #     os.makedirs(key1)
+
+
