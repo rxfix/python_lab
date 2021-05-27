@@ -1,4 +1,5 @@
 __author__ = 'Нестеренко Александр'
+
 # Задание 1. Написать скрипт, создающий стартер (заготовку) для проекта со следующей структурой папок:
 # |--my_project
 #    |--settings
@@ -39,3 +40,33 @@ __author__ = 'Нестеренко Александр'
 # Примечание: структуру файла config.yaml придумайте сами, его можно создать в любом текстовом
 # редакторе «руками» (не программно); предусмотреть возможные исключительные ситуации, библиотеки
 # использовать нельзя.
+
+import os
+import yaml
+
+
+def create_dir(path):
+    if not os.path.exists(path):  # если директории не существует
+        os.makedirs(path)  # создать директорию
+
+
+def create_file(path, file_name):
+    file_path = os.path.join(path, str(file_name))
+    if not os.path.exists(file_path):  # если файла не существует
+        with open(file_path, 'w', encoding='utf-8') as f:  # создать файл
+            f.write('')
+
+
+def create_starter(config_file):
+    with open(config_file) as f_structure:
+        structure = yaml.safe_load(f_structure)
+
+    for key_path, val_files_names in structure.items():  # ключи структуры - директории
+        create_dir(key_path)
+        if val_files_names:  # списки значений - имена файлов
+            for file_name in val_files_names:
+                create_file(key_path, file_name)
+
+
+if __name__ == '__main__':
+    create_starter('config.yaml')
