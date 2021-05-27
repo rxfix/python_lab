@@ -1,5 +1,0 @@
-my_project:
-- settings:
-- __init__.py
-- dev.py
-- prod.py
