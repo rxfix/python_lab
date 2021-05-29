@@ -20,6 +20,10 @@ import os
 from shutil import copyfile
 
 
+def copi_dir(scr, dst):
+    pass
+
+
 def get_dirs(project_root, dir_name):  # поиск путей к нужным директориям
     required_dirs = set()
     for path, dirs, _ in os.walk(project_root):
@@ -46,7 +50,5 @@ destination_dir = './my_project/templates'
 
 source_dir = get_dirs(root, required_dir)
 
-
 if __name__ == '__main__':
     copi_dir(source_dir, destination_dir)
-
