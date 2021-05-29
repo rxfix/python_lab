@@ -20,22 +20,18 @@ import os
 from shutil import copyfile
 
 
-def copi_dir(scr, dst):
-    pass
-
-
 def get_dirs(project_root, dir_name):  # поиск путей к нужным директориям
     required_dirs = set()
-    for path, dirs, _ in os.walk(project_root):
-        for dir in dirs:
-            if dir == dir_name:
-                required_dirs.add(os.path.join(path, dir))
+    for root, dirs, _ in os.walk(project_root):
+        for _dir in dirs:
+            if _dir == dir_name:
+                required_dirs.add(os.path.join(root, _dir))
     return required_dirs
 
 
 def copi_dir(scr, dst):  # копирование содержимого найденных директорий
-    for dir in scr:
-        for root, dirs, files in os.walk(dir):
+    for _dir in scr:
+        for root, dirs, files in os.walk(_dir):
             for file in files:
                 dir_name = os.path.join(dst, os.path.basename(root))
                 if not os.path.exists(dir_name):
@@ -44,11 +40,10 @@ def copi_dir(scr, dst):  # копирование содержимого най�
                     copyfile(os.path.join(root, file), os.path.join(dir_name, file))
 
 
-root = './my_project'
+root_dir = './my_project'
 required_dir = 'templates'
 destination_dir = './my_project/templates'
 
-source_dir = get_dirs(root, required_dir)
-
 if __name__ == '__main__':
+    source_dir = get_dirs(root_dir, required_dir)
     copi_dir(source_dir, destination_dir)
