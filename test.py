@@ -91,7 +91,7 @@ result = re.findall(r'@\w+.(\w+)', 'abc.test@gmail.com, xyz@test.in, '
 # result = re.findall(r'((?:\d+\.){3}\w+).\-.\-', '93.180.71.3 - - [17/May/2015:08:05:26 +0000] "GET /downloads/product_1 HTTP/1.1" 404 324 "-" "Debian APT-HTTP/1.3 (0.8.16~exp12ubuntu10.21)"')
 # result = re.findall(r'\[(\d+\/\w+\/(?:\d+:){3}\d+.\+\d+)\]', '93.180.71.3 - - [17/May/2015:08:05:26 +0000] "GET /downloads/product_1 HTTP/1.1" 404 324 "-" "Debian APT-HTTP/1.3 (0.8.16~exp12ubuntu10.21)"')
 # result = re.findall(r'(?:\].)\"(\w+)', '93.180.71.3 - - [17/May/2015:08:05:26 +0000] "GET /downloads/product_1 HTTP/1.1" 404 324 "-" "Debian APT-HTTP/1.3 (0.8.16~exp12ubuntu10.21)"')
-result = re.findall(r'((?:\/\w+){2}).HTTP', '93.180.71.3 - - [17/May/2015:08:05:26 +0000] "GET /downloads/product_1 HTTP/1.1" 404 324 "-" "Debian APT-HTTP/1.3 (0.8.16~exp12ubuntu10.21)"')
+result = re.findall(r'((?:\d+\.){3}\w+).\-.\-|((?:\/\w+){2}).HTTP', '93.180.71.3 - - [17/May/2015:08:05:26 +0000] "GET /downloads/product_1 HTTP/1.1" 404 324 "-" "Debian APT-HTTP/1.3 (0.8.16~exp12ubuntu10.21)"')
 
 
 
