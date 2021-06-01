@@ -43,4 +43,4 @@ def calc_cube(x):
     return x ** 3
 
 
-print(calc_cube(-5))
+print(calc_cube(5))

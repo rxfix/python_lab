@@ -14,38 +14,23 @@ __author__ = 'Нестеренко Александр'
 
 
 import urllib.request
-# import yaml
+import time
 import re
 
 URL = 'https://github.com/elastic/examples/raw/master/Common%20Data%20Formats/nginx_logs/nginx_logs'
 
 response = urllib.request.urlopen(URL)
 
-all_lisl = []
+# reg_exp = ((?:[\d]{1,3}\.){3}[\d]{1,3}).*\[(.*)\].\"([A-Z]+).((?:\/\w+)*).*\".([\d]{1,3}).(\d+)
 reg_exp = r"""
-    ((?:\d+\.){3}\d+)  # <remote_addr>
-    (?:(?:\s\-){2}\s\[)
-    (\d+\/\w+\/(?:\d+:){3}\d+.+\d+)  # <request_datetime>
-    (?:\]\s")
-    (\w+)  #<request_type>
-    (?:\s)
-    (\/.+?)  # <requested_resource>
-    (?:\s\w+\/\d+\.\d+"\s)
-    (\d+)  # <response_code>
-    (?:\s)
+    ((?:[\d]{1,3}\.){3}[\d]{1,3}).*  # <remote_addr>
+    \[(.*)\].  # <request_datetime>
+    \"([A-Z]+).  #<request_type>
+    ((?:\/\w+)*).*  # <requested_resource>
+    \".([\d]{1,3}).  # <response_code>
     (\d+)  # <response_size>
     """
 for raw in response:  # читаем по стокам из запроса
     parsed_raw = re.findall(reg_exp, str(raw), re.VERBOSE)
-    all_lisl.append(parsed_raw)
     print(parsed_raw)
-
-# with open('all_lisl.yaml', 'w', encoding='utf-8') as f:
-#     yaml.dump(all_lisl, f)
-# r = r'((?:\d+\.){3}\d+)(?:(?:\s\-){2}\s\[)(\d+\/\w+\/(?:\d+:){3}\d+.+\d+)(?:\]\s")(\w+)(?:\s)((?:\/\w+){0,10})(?:\s\w+\/\d+\.\d+"\s)(\d+)(?:\s)(\d+)'
-# parsed_raw = re.findall(r'((?:\d+\.){3}\d+)(?:(?:\s\-){2}\s\[)(\d+\/\w+\/(?:\d+:){3}\d+.+\d+)(?:\]\s")(\w+)(?:\s)((?:\/\w+){0,10})(?:\s\w+\/\d+\.\d+"\s)(\d+)(?:\s)(\d+)', '129.67.27.68 - - [31/May/2015:10:05:08 +0000] "GET /downloads/product_1 HTTP/1.1" 404 324 "-" "Debian APT-HTTP/1.3 (0.8.16~exp12ubuntu10.22)"')
-
-# print(parsed_raw)
-
-
-((?:\d+\.){3}\d+).*\[(.*)\].*\"([A-Z]+).*(\/.+?)(?:\s\w+\/\d+\.\d+"\s)(\d+)(?:\s)(\d+)
+    time.sleep(0.5)
