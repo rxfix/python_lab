@@ -34,9 +34,9 @@ class TrafficLight:
                 self.__color = 'красный'
 
 
-traffic_light_1 = TrafficLight()
-
-traffic_light_1.running()
-print('***************', traffic_light_1)
-traffic_light_1.running()
-print('***************', traffic_light_1)
+if __name__ == '__main__':
+    traffic_light_1 = TrafficLight()
+    traffic_light_1.running()
+    print('***************', traffic_light_1)
+    traffic_light_1.running()
+    print('***************', traffic_light_1)
