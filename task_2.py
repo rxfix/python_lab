@@ -20,11 +20,11 @@ class Road:
     def __str__(self):
         return f'{self._length} {self._width}'
 
-    def get_mass_of_asphalt(self):
-        pass
+    def get_mass(self, mass_on_metr2, depth):
+        return f'{self._width * self._length * depth * mass_on_metr2 / 1000} тонн.'
 
 
-
-road_1 = Road(5, 6)
-print(road_1)
-road_1.get_mass_of_asphalt()
+if __name__ == '__main__':
+    road_1 = Road(5000, 20)
+    print(road_1)
+    print(road_1.get_mass(25, 5))
