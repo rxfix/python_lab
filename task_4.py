@@ -22,25 +22,26 @@ __author__ = 'Нестеренко Александр'
 
 def val_checker(is_valid):
     def wrapper(func):
-        def validator(*args):
+        def validate_args(*args):
             if is_valid(*args):
                 result = func(*args)
                 return result
             else:
                 raise ValueError(f'wrong val:{args}')
 
-        return validator
+        return validate_args
 
     return wrapper
 
 
-def lam(x):
+def check_arg(x):
     return 0 < x
 
 
-@val_checker(lam)
+@val_checker(check_arg)
 def calc_cube(x):
     return x ** 3
 
 
 print(calc_cube(5))
+print(calc_cube(-5))
