@@ -19,6 +19,9 @@ class Worker:
         self.position = position
         self._income = {'wage': wage, 'bonus': bonus}
 
+    def __str__(self):
+        return f'{self.name} {self.surname} {self.position},{self._income}'
+
 
 class Position(Worker):
     def get_full_name(self):
@@ -30,6 +33,6 @@ class Position(Worker):
 
 if __name__ == '__main__':
     person_1 = Position('Петр', 'Иванов', 'бухгалтер', 500, 100)
+    print('Значния атрибутов:', person_1)
     print(person_1.get_full_name())
     print(person_1.get_total_income())
-    # print(person_1._income)
