@@ -13,11 +13,11 @@ __author__ = 'Нестеренко Александр'
 
 
 class Worker:
-    def __init__(self, name, surname, position, wage, bonus):
+    def __init__(self, name, surname, position, income):
         self.name = name
         self.surname = surname
         self.position = position
-        self._income = {'wage': wage, 'bonus': bonus}
+        self._income = income
 
     def __str__(self):
         return f'{self.name} {self.surname} {self.position},{self._income}'
@@ -32,7 +32,8 @@ class Position(Worker):
 
 
 if __name__ == '__main__':
-    person_1 = Position('Петр', 'Иванов', 'бухгалтер', 500, 100)
+    income_dict = {"wage": 50, "bonus": 15}
+    person_1 = Position('Петр', 'Иванов', 'бухгалтер', income_dict )
     print('Значния атрибутов:', person_1)
     print(person_1.get_full_name())
     print(person_1.get_total_income())

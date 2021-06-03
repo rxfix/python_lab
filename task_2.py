@@ -21,10 +21,10 @@ class Road:
         return f'{self._length} {self._width}'
 
     def get_mass(self, mass_on_metr2, depth):
-        return f'{self._width * self._length * depth * mass_on_metr2 / 1000} тонн.'
+        return self._width * self._length * depth * mass_on_metr2
 
 
 if __name__ == '__main__':
     road_1 = Road(5000, 20)
     print(road_1)
-    print(road_1.get_mass(25, 5))
+    print(f'{road_1.get_mass(25, 5) / 1000} тонн')
