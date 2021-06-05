@@ -24,13 +24,16 @@ class Car:
     def __str__(self):
         return f'{self.speed} {self.color} {self.name} {self.is_police}'
 
-    def go(self):
+    @staticmethod
+    def go():
         print('Машина поехала')
 
-    def stop(self):
+    @staticmethod
+    def stop():
         print('Машина остановилась')
 
-    def turn(self, direction):
+    @staticmethod
+    def turn(direction):
         print(f'Машина повернула, {direction}')
 
     def show_speed(self):
@@ -42,8 +45,6 @@ class TownCar(Car):
         super().show_speed()
         if 60 < self.speed:
             print(f'Превышении скорости: {self.speed - 60}')
-        else:
-            return f'{self.speed}'
 
 
 class SportCar(Car):
@@ -51,12 +52,12 @@ class SportCar(Car):
 
 
 class WorkCar(Car):
+
     def show_speed(self):
         super().show_speed()
         if 40 < self.speed:
             print(f'Превышении скорости: {self.speed - 40}')
-        else:
-            print(f'Текущая скорость: {self.speed}')
+
 
 class PoliceCar(Car):
     pass
@@ -64,12 +65,11 @@ class PoliceCar(Car):
 
 if __name__ == '__main__':
     car_1 = Car(100, 'blue', 'Alfa', True)
-    car_2 = TownCar(speed=50, color='red', name='Audi', is_police=False)
-    car_3 = WorkCar(speed=40, color='green', name='VW', is_police=False)
+    car_2 = TownCar(speed=100, color='red', name='Audi', is_police=False)
+    car_3 = WorkCar(speed=50, color='green', name='VW', is_police=False)
 
-    # print(car_1)
-    # print(car_2)
-    # print(car_3)
-    # print(f'car_1: {car_1.show_speed()}')
-    # print(car_2.show_speed())
+    print(car_1)
+    print(car_2)
+    print(car_3)
+    print(car_2.show_speed())
     print(car_3.show_speed())
