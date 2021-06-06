@@ -33,7 +33,7 @@ class Position(Worker):
 
 if __name__ == '__main__':
     income_dict = {"wage": 50, "bonus": 15}
-    person_1 = Position('Петр', 'Иванов', 'бухгалтер', income_dict )
+    person_1 = Position('Петр', 'Иванов', 'бухгалтер', income_dict)
     print('Значния атрибутов:', person_1)
     print(person_1.get_full_name())
     print(person_1.get_total_income())

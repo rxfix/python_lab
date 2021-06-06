@@ -14,23 +14,23 @@ __author__ = 'Нестеренко Александр'
 
 
 class Car:
-    def __init__(self, speed=0, color='', name='', is_police=False):
-        self.speed = speed
+    is_police = False
+
+    def __init__(self, color, name):
+        self.speed = 0
         self.color = color
         self.name = name
-        self.is_police = is_police
-        self.direction = ''
 
     def __str__(self):
         return f'{self.speed} {self.color} {self.name} {self.is_police}'
 
-    @staticmethod
-    def go():
-        print('Машина поехала')
+    def go(self, speed):
+        self.speed = speed
+        print(f'{self.name} Машина поехала')
 
-    @staticmethod
-    def stop():
-        print('Машина остановилась')
+    def stop(self):
+        self.speed = 0
+        print(f'{self.name} Машина остановилась')
 
     @staticmethod
     def turn(direction):
@@ -60,16 +60,23 @@ class WorkCar(Car):
 
 
 class PoliceCar(Car):
-    pass
+    is_police = True
 
 
 if __name__ == '__main__':
-    car_1 = Car(100, 'blue', 'Alfa', True)
-    car_2 = TownCar(speed=100, color='red', name='Audi', is_police=False)
-    car_3 = WorkCar(speed=50, color='green', name='VW', is_police=False)
+    police_car = PoliceCar('blue', 'Alfa')
+    town_car = TownCar('red', 'Audi')
+    work_car = WorkCar('green', 'VW')
 
-    print(car_1)
-    print(car_2)
-    print(car_3)
-    print(car_2.show_speed())
-    print(car_3.show_speed())
+    print(police_car)
+    print(town_car)
+    print(work_car)
+
+    police_car.go(80)
+    police_car.show_speed()
+
+    town_car.go(90)
+    town_car.show_speed()
+
+    work_car.go(50)
+    work_car.show_speed()
