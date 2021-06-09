@@ -25,29 +25,22 @@ __author__ = 'Нестеренко Александр'
 class Matrix:
     def __init__(self, matrix):
         self.matrix = matrix
-    #
-    # def __str__(self):
-    #     for row in range(len(self.matrix)):
-    #         for el in range(len(self.matrix[row])):
-    #             print(f'{self.matrix[row][el]}')
 
-        # for row in self.matrix:
-        #     for elem in row:
-        #         print(elem, end= ' ')
-        #     print('\r')
+    def __str__(self):
+        return '\n'.join([' '.join(map(str, row)) for row in self.matrix])
 
-        for row in self.matrix:
-            print(' '.join(map(str, row)))
-        # for i in range(len(A)):
-        #     for j in range(len(A[i]):
-        #         print(A[i][j], end=' ')
-        #     print()
-
-    # def __add__(self, other):
-    #     return
+    def __add__(self, other):
+        return Matrix([
+            [cell_self + cell_other
+             for cell_self, cell_other in zip(row_self, row_other)]
+            for row_self, row_other in zip(self.matrix, other.matrix)
+        ])
 
 
-mat_1 = Matrix([[31, 22], [37, 43], [51, 86]])
-# mat_2 = Matrix([[25, 2], [7, 53], [5, 6]])
-print(mat_1)
-# print(mat_2)
+if __name__ == '__main__':
+    matrix_1 = Matrix([[31, 22, 8], [37, 43, 56], [51, 86, 4]])
+    matrix_2 = Matrix([[25, 2, 7], [7, 53, 78], [5, 6, 45]])
+    print(matrix_1, '\n')
+    print(matrix_2, '\n')
+    matrix_3 = matrix_1 + matrix_2
+    print(matrix_3)
