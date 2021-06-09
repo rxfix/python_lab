@@ -38,7 +38,7 @@ class Cell:
 
     def __sub__(self, other):
         if abs(self.cell - other.cell) > 0:
-            return Cell(self.cell - other.cell)
+            return Cell(abs(self.cell - other.cell))
         else:
             return 'разность количества ячеек двух клеток нулевая'
 
@@ -65,7 +65,7 @@ if __name__ == '__main__':
     a = Cell(100)
     b = Cell(25)
     print(a + b)
-    print(a - b)
+    print(b - a)
     # print(b * a)
     # print(b / a)
     print(a // b)
