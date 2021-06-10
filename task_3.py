@@ -60,8 +60,8 @@ class Cell:
 
 
 if __name__ == '__main__':
-    a = Cell(15)
-    b = Cell(17)
+    a = Cell(17)
+    b = Cell(15)
     print(a + b)
     print(b - a)
     print(b * a)
