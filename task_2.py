@@ -12,16 +12,6 @@ from abc import ABC, abstractmethod
 
 
 class Clothes(ABC):
-    def __init__(self):
-        self.ex = 0
-
-    def __str__(self):
-        return f'{self.ex}'
-
-    # @property
-    # def expence(self):
-    #     self.ex = self.consumption()
-    #     return self.ex
 
     @abstractmethod
     def consumption(self):
@@ -33,7 +23,6 @@ class Clothes(ABC):
 
 class Coat(Clothes):
     def __init__(self, v):
-        super().__init__()
         self.v = v
 
     def consumption(self):
@@ -42,16 +31,16 @@ class Coat(Clothes):
 
 class Suit(Clothes):
     def __init__(self, h):
-        super().__init__()
         self.h = h
 
     def consumption(self):
         return self.h * 2 + 0.3
 
 
-a = Coat(187)
-b = Suit(150)
-c = a + b
-print(a.consumption())
-print(b.consumption())
-print(c)
+if __name__ == '__main__':
+    coat_1 = Coat(187)
+    suit_1 = Suit(150)
+    c = coat_1 + suit_1
+    print(coat_1.consumption())
+    print(suit_1.consumption())
+    print(c)
