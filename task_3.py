@@ -39,8 +39,7 @@ class Cell:
     def __sub__(self, other):
         if abs(self.cell - other.cell) > 0:
             return Cell(abs(self.cell - other.cell))
-        else:
-            return 'разность количества ячеек двух клеток нулевая'
+        raise ValueError('разность количества ячеек двух клеток нулевая')
 
     def __mul__(self, other):
         return Cell(self.cell * other.cell)
@@ -51,24 +50,23 @@ class Cell:
     def __floordiv__(self, other):
         return Cell(self.cell // other.cell)
 
-    def make_order(self, number_of_cells_in_a_row):
-        cell = self.cell
-        while cell > 0:
-            if cell > number_of_cells_in_a_row:
-                print('*' * number_of_cells_in_a_row, '\n')
-            else:
-                print('*' * cell)
-            cell = cell - number_of_cells_in_a_row
+    def make_order(self, raw_len):
+        result = []
+        for item in range(self.cell // raw_len):
+            result.append('*' * raw_len)
+        if self.cell % raw_len:
+            result.append('*' * (self.cell % raw_len))
+        return '\n'.join(result)
 
 
 if __name__ == '__main__':
-    a = Cell(100)
-    b = Cell(25)
+    a = Cell(15)
+    b = Cell(17)
     print(a + b)
     print(b - a)
-    # print(b * a)
-    # print(b / a)
+    print(b * a)
+    print(b / a)
     print(a // b)
     c = a + b
     print(c)
-    c.make_order(25)
+    print(c.make_order(10))

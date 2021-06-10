@@ -38,8 +38,13 @@ class Matrix:
 
 
 if __name__ == '__main__':
-    matrix_1 = Matrix([[31, 22, 8], [37, 43, 56], [51, 86, 4]])
-    matrix_2 = Matrix([[25, 2, 7], [7, 53, 78], [5, 6, 45]])
+    matrix_1 = Matrix([[31, 22, 8],
+                       [37, 43, 56],
+                       [51, 86, 4]])
+    я
+    matrix_2 = Matrix([[25, 2, 7],
+                       [7, 53, 78],
+                       [5, 6, 45]])
     print(matrix_1, '\n')
     print(matrix_2, '\n')
     matrix_3 = matrix_1 + matrix_2
