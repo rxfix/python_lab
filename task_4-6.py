@@ -72,17 +72,15 @@ class Xerox(OfficeEquipment):
                f' Количество: {self.quantity} Скорость копирования: {self.copy_speed}'
 
 
-
 if __name__ == '__main__':
     sklad = Stock()
 
     printer = Printer('hp', 330, 99, 'Лазерный')
     sklad.add_to(printer)
-    printer= Printer('hp', 330, 99, 'Струйный')
+    printer = Printer('hp', 330, 99, 'Струйный')
     sklad.add_to(printer)
     printer = Printer('hp', 330, 98, 'Лазерный')
     sklad.add_to(printer)
-
 
     print(sklad.product)
     print(printer)
