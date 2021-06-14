@@ -16,13 +16,16 @@ _author__ = 'Нестеренко Александр'
 # пользователем данных. Например, для указания количества принтеров, отправленных на склад,
 # нельзя использовать строковый тип данных.
 
+class OwnError(Exception):
+    pass
+
 
 class Stock:
     def __init__(self):
         self.product = {}
 
     def add_to(self, equipment):
-        self.product.setdefault(str(equipment), []).append(equipment)
+        self.product.setdefault(equipment.name, []).append(equipment.quantity)
 
     def extract(self, name):
         if self.product[name]:
@@ -36,6 +39,13 @@ class OfficeEquipment:
         self.name = name
         self.price = price
         self.quantity = quantity
+        self.validator(self.quantity)
+
+    @staticmethod
+    def validator(quantity):
+        if isinstance(quantity, str):
+            raise ValueError(f'нельзя использовать строковый тип данных')
+        return quantity
 
     def __str__(self):
         return f'{self.__class__.__name__}: {self.name}, Цена: {self.price} {self.units},' \
@@ -43,18 +53,18 @@ class OfficeEquipment:
 
 
 class Printer(OfficeEquipment):
-    def __init__(self, name, price, quantity, type_print):
-        super().__init__(name, price, quantity)
+    def __init__(self, type_print, *args):
+        super().__init__(*args)
         self.type_print = type_print
 
     def __str__(self):
-        return f'{self.__class__.__name__}: {self.name}, Цена: {self.price} {self.units},' \
-               f' Количество: {self.quantity} Тип: {self.type_print}'
+        return f'{self.__class__.__name__} - {self.name}, Цена - {self.price} {self.units},' \
+               f' Количество - {self.quantity} Тип - {self.type_print}'
 
 
 class Scanner(OfficeEquipment):
-    def __init__(self, name, price, quantity, resolution):
-        super().__init__(name, price, quantity)
+    def __init__(self, resolution, *args):
+        super().__init__(*args)
         self.resolution = resolution
 
     def __str__(self):
@@ -63,8 +73,8 @@ class Scanner(OfficeEquipment):
 
 
 class Xerox(OfficeEquipment):
-    def __init__(self, name, price, quantity, copy_speed):
-        super().__init__(name, price, quantity)
+    def __init__(self, copy_speed, *args):
+        super().__init__(*args)
         self.copy_speed = copy_speed
 
     def __str__(self):
@@ -74,13 +84,12 @@ class Xerox(OfficeEquipment):
 
 if __name__ == '__main__':
     sklad = Stock()
-
-    printer = Printer('hp', 330, 99, 'Лазерный')
+    printer = Printer('Лазерный', 'hp', 330, 5)
     sklad.add_to(printer)
-    printer = Printer('hp', 330, 99, 'Струйный')
+    printer = Printer('Струйный', 'Canon', 150, 5)
     sklad.add_to(printer)
-    printer = Printer('hp', 330, 98, 'Лазерный')
+    printer = Printer('Лазерный', 'Epson', 20, 7)
     sklad.add_to(printer)
-
     print(sklad.product)
-    print(printer)
+    sklad.extract('Epson')
+    print(sklad.product)
