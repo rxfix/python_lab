@@ -43,13 +43,13 @@ class OfficeEquipment:
 
 
 class Printer(OfficeEquipment):
-    def __init__(self, name, price, quantity, type):
+    def __init__(self, name, price, quantity, type_print):
         super().__init__(name, price, quantity)
-        self.type = type
+        self.type_print = type_print
 
     def __str__(self):
         return f'{self.__class__.__name__}: {self.name}, Цена: {self.price} {self.units},' \
-               f' Количество: {self.quantity} Тип {self.type}'
+               f' Количество: {self.quantity} Тип {self.type_print}'
 
 
 class Scanner(OfficeEquipment):
@@ -74,13 +74,13 @@ class Xerox(OfficeEquipment):
 
 sklad = Stock()
 
-scaner = Printer('hp', 330, 99, 'laser')
-sklad.add_to(scaner)
-scaner = Printer('hp', 330, 99, 'laser')
-sklad.add_to(scaner)
-scaner = Printer('hp', 330, 99, 'laser')
-# sklad.add_to(scaner)
+printer = Printer('hp', 330, 99, 'laser')
+sklad.add_to(printer)
+printer= Printer('hp', 330, 99, 'laser')
+sklad.add_to(printer)
+printer = Printer('hp', 330, 99, 'laser')
+sklad.add_to(printer)
 
 # выводим склад
 print(sklad.product)
-print(scaner)
+print(printer)
